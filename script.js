@@ -4,9 +4,7 @@ const form = document.getElementById("form");
 
 let activities = [];
 
-// ==========================
-// CARREGA ATIVIDADES DO JSON
-// ==========================
+// Carrega atividades do JSON
 async function loadActivities() {
   try {
     const response = await fetch("activities.json");
@@ -18,9 +16,7 @@ async function loadActivities() {
   }
 }
 
-// ==========================
-// RENDERIZA CHECKBOXES
-// ==========================
+// Renderiza checkboxes
 function renderActivities() {
   activitiesDiv.innerHTML = "";
 
@@ -46,9 +42,7 @@ function renderActivities() {
     });
 }
 
-// ==========================
-// ATUALIZA TOTAL
-// ==========================
+// Atualiza total
 function updateTotal() {
   const checked = document.querySelectorAll(
     "input[type=checkbox]:checked"
@@ -64,9 +58,7 @@ function updateTotal() {
 
 activitiesDiv.addEventListener("change", updateTotal);
 
-// ==========================
-// SUBMIT DO FORMULÁRIO
-// ==========================
+// Submit do formulário
 form.addEventListener("submit", async e => {
   e.preventDefault();
 
@@ -95,9 +87,10 @@ form.addEventListener("submit", async e => {
 
   try {
     const response = await fetch(
-      "send-contract-email.contact-purplecatstudios.workers.dev",
+      "https://send-contract-email.contact-purplecatstudios.workers.dev",
       {
         method: "POST",
+        mode: "cors",
         headers: {
           "Content-Type": "application/json"
         },
@@ -119,7 +112,5 @@ form.addEventListener("submit", async e => {
   }
 });
 
-// ==========================
-// INICIALIZA
-// ==========================
+// Inicialização
 loadActivities();
