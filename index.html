@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Solicitação de Atividades</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<main class="container">
+  <h1>Selecione as atividades</h1>
+
+  <form id="form">
+    <section id="activities" class="activities"></section>
+
+    <div class="summary">
+      <strong>Total:</strong>
+      <span id="total">R$ 0</span>
+    </div>
+
+    <div class="user-data">
+      <input type="email" id="email" placeholder="Seu email" required />
+      <textarea id="message" placeholder="Mensagem (opcional)"></textarea>
+    </div>
+
+    <button type="submit">Enviar</button>
+  </form>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
