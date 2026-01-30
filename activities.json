@@ -12,5 +12,13 @@
     "description": "Sprite animado em loop",
     "price": 80,
     "active": true
+  },
+  {
+    "id": 3,
+    "name": "Ricardo Milos",
+    "description": "Dança sensual e envolvente para te fazer relaxar.",
+    "price": 1000,
+    "active": true
   }
+  
 ]
