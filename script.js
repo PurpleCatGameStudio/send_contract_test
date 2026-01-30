@@ -1,45 +1,38 @@
-const activities = [
-  {
-    id: 1,
-    name: "Pixel Art",
-    description: "Arte pixel 16x16 ou 32x32",
-    price: 50
-  },
-  {
-    id: 2,
-    name: "Animação",
-    description: "Sprite animado em loop",
-    price: 80
-  },
-  {
-    id: 3,
-    name: "UI Game",
-    description: "Interface completa para jogos",
-    price: 100
-  }
-];
-
 const activitiesDiv = document.getElementById("activities");
 const totalSpan = document.getElementById("total");
 const form = document.getElementById("form");
 
+let activities = [];
+
+async function loadActivities() {
+  try {
+    const response = await fetch("activities.json");
+    activities = await response.json();
+    renderActivities();
+  } catch (err) {
+    console.error("Erro ao carregar atividades", err);
+  }
+}
+
 function renderActivities() {
   activitiesDiv.innerHTML = "";
 
-  activities.forEach(act => {
-    const div = document.createElement("div");
-    div.className = "activity";
+  activities
+    .filter(a => a.active)
+    .forEach(act => {
+      const div = document.createElement("div");
+      div.className = "activity";
 
-    div.innerHTML = `
-      <input type="checkbox" data-id="${act.id}" data-price="${act.price}">
-      <div>
-        <h3>${act.name} – R$ ${act.price}</h3>
-        <p>${act.description}</p>
-      </div>
-    `;
+      div.innerHTML = `
+        <input type="checkbox" data-id="${act.id}" data-price="${act.price}">
+        <div>
+          <h3>${act.name} – R$ ${act.price}</h3>
+          <p>${act.description}</p>
+        </div>
+      `;
 
-    activitiesDiv.appendChild(div);
-  });
+      activitiesDiv.appendChild(div);
+    });
 }
 
 function updateTotal() {
@@ -71,7 +64,7 @@ form.addEventListener("submit", e => {
   };
 
   console.log("FORM DATA:", data);
-  alert("Frontend funcionando. Dados no console.");
+  alert("Frontend OK – dados no console");
 });
 
-renderActivities();
+loadActivities();

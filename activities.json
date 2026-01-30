@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "Pixel Art",
+    "description": "Arte pixel 16x16 ou 32x32",
+    "price": 50,
+    "active": true
+  },
+  {
+    "id": 2,
+    "name": "Animação",
+    "description": "Sprite animado em loop",
+    "price": 80,
+    "active": true
+  }
+]
